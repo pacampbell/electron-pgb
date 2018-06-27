@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>PGB - Gameboy Emulator</title>
+        <link rel="stylesheet" href="css/photon.css">
+        <link rel="stylesheet" href="css/pgb.css">
+        <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+        <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script>if (window.module) module = window.module;</script>
+    </head>
+    <body>
+        <div class="window">
+            <header id="debugger-toolbar" class="toolbar toolbar-header">
+                <div class="toolbar-actions">
+                    <div class="btn-group">
+                        <button id="debugger-reset" class="btn btn-default" title="restart">
+                            <span class="icon icon-ccw"></span>
+                        </button>
+                        <button id="debugger-step" class="btn btn-default" title="step">
+                            <span class="icon icon-to-end"></span>
+                        </button>
+                        <button class="btn btn-default" title="continue">
+                            <span class="icon icon-play"></span>
+                        </button>
+                        <button class="btn btn-default" title="break">
+                            <span class="icon icon-pause"></span>
+                        </button>
+                        <button class="btn btn-default" title="stop">
+                            <span class="icon icon-stop"></span>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <div class="window-content">
+                <div class="pane-group">
+                    <div id="renderer" class="pane">
+                        <span id="first-load-message">
+                            <span id="title">PGB - Gameboy emulator</span> <br>
+                            Select rom to load <br>
+                            <button class="btn btn-default" title="load rom">
+                                <span class="icon icon-upload"></span>
+                            </button>
+                        </span>
+                    </div>
+                    <div id="debugger-info" class="pane">
+                        <header class="toolbar toolbar-header">
+                            <h1 class="title">LR35902 Registers</h1>
+                        </header>
+                        <table class="table-striped monospaced">
+                            <thead>
+                                <tr>
+                                    <th>Register</th>
+                                    <th>Value</th>
+                                    <th>Register</th>
+                                    <th>Value</th>
+                                </tr>
+                            </thead>
+                            <tr>
+                                <td>AF</td>
+                                <td id="register-af">0x0000</td>
+                                <td>BC</td>
+                                <td id="register-bc">0x0000</td>
+                            </tr>
+                            <tr>
+                                <td>DE</td>
+                                <td id="register-de">0x0000</td>
+                                <td>HL</td>
+                                <td id="register-hl">0x0000</td>
+                            </tr>
+                            <tr>
+                                <td>PC</td>
+                                <td id="register-pc">0x0000</td>
+                                <td>SP</td>
+                                <td id="register-sp">0x0000</td>
+                            </tr>
+                        </table>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Half-carry</th>
+                                    <th>Carry</th>
+                                    <th>Subtraction</th>
+                                    <th>Zero</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td id="flag-hc">0</td>
+                                    <td id="flag-c">0</td>
+                                    <td id="flag-s">0</td>
+                                    <td id="flag-z">0</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <header class="toolbar toolbar-header">
+                            <h1 class="title">DMG Registers</h1>
+                            <table id="debugger-dmg-registers" class="table-striped monospaced">
+                            <thead>
+                                <tr>
+                                    <th>Register</th>
+                                    <th>Address</th>
+                                    <th>Value</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                        </header>
+                        <header class="toolbar toolbar-header">
+                            <h1 class="title">Assembly</h1>
+                        </header>
+                        <table id="debugger-disasm" class="table-striped monospaced">
+                            <thead>
+                                <tr>
+                                    <th>Address</th>
+                                    <th>Raw</th>
+                                    <th>Decoded</th>
+                                    <th>Comment</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div id="debugger-console">
+                <div id="debugger-output">
+                    <pre></pre>
+                </div>
+                <input id="debugger-input" placeholder="enter command or type help" data-list="help, read, set">
+            </div>
+        </div>
+    </body>
+</html>

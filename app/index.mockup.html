@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>PGB - Gameboy Emulator</title>
+        <link rel="stylesheet" href="css/photon.css">
+        <link rel="stylesheet" href="css/pgb.css">
+        <script type="text/javascript" src="js/index.js"></script>
+    </head>
+    <body>
+
+        <div class="window">
+            <header id="debugger-toolbar" class="toolbar toolbar-header">
+                <div class="toolbar-actions">
+                    <div class="btn-group">
+                        <button class="btn btn-default" title="restart">
+                            <span class="icon icon-ccw"></span>
+                        </button>
+                        <button class="btn btn-default" title="step">
+                            <span class="icon icon-to-end"></span>
+                        </button>
+                        <button class="btn btn-default" title="continue">
+                            <span class="icon icon-play"></span>
+                        </button>
+                        <button class="btn btn-default" title="break">
+                            <span class="icon icon-pause"></span>
+                        </button>
+                        <button class="btn btn-default" title="stop">
+                            <span class="icon icon-stop"></span>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <div class="window-content">
+                <div class="pane-group">
+                    <div id="renderer" class="pane"></div>
+                    <div id="debugger-info" class="pane">
+                        <header class="toolbar toolbar-header">
+                            <h1 class="title">Registers</h1>
+                        </header>
+                        <table class="table-striped monospaced">
+                            <thead>
+                                <tr>
+                                    <th>Register</th>
+                                    <th>Value</th>
+                                    <th>Register</th>
+                                    <th>Value</th>
+                                </tr>
+                            </thead>
+                            <tr>
+                                <td>AF</td>
+                                <td id="register-af">0x0000</td>
+                                <td>BC</td>
+                                <td id="register-bc">0x0000</td>
+                            </tr>
+                            <tr>
+                                <td>DE</td>
+                                <td id="register-de">0x0000</td>
+                                <td>HL</td>
+                                <td id="register-hl">0x0000</td>
+                            </tr>
+                            <tr>
+                                <td>PC</td>
+                                <td id="register-pc">0x0003</td>
+                                <td>SP</td>
+                                <td id="register-sp">0xffee</td>
+                            </tr>
+                        </table>
+                        <header class="toolbar toolbar-header">
+                            <h1 class="title">Assembly</h1>
+                        </header>
+                        <table class="table-striped monospaced">
+                            <thead>
+                                <tr>
+                                    <th>Address</th>
+                                    <th>Raw</th>
+                                    <th>Decoded</th>
+                                </tr>
+                                <tr>
+                                    <td>0000</td>
+                                    <td></td>
+                                    <td>ld sp, 0xffee</td>
+                                </tr>
+                                <tr class="debugger current">
+                                    <td>0003</td>
+                                    <td></td>
+                                    <td>xor a</td>
+                                </tr>
+                                <tr>
+                                    <td>0004</td>
+                                    <td></td>
+                                    <td>ld hl, 0x9fff</td>
+                                </tr>
+                                <tr>
+                                    <td>0007</td>
+                                    <td></td>
+                                    <td>ld (hl-), a</td>
+                                </tr>
+                                <tr>
+                                    <td>0008</td>
+                                    <td></td>
+                                    <td>bit 7, h</td>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div id="debugger-memory-viewer">
+                <header class="toolbar toolbar-header">
+                    <h1 class="title">Memory</h1>
+                </header>
+                <div id="memory-section">ROM Bank 00</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Address</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>4</td>
+                            <td>5</td>
+                            <td>6</td>
+                            <td>7</td>
+                            <td>8</td>
+                            <td>9</td>
+                            <td>a</td>
+                            <td>b</td>
+                            <td>c</td>
+                            <td>d</td>
+                            <td>e</td>
+                            <td>f</td>
+                            <td>ascii</td>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div id="debugger-console">
+                <div id="debugger-output"><pre></pre></div>
+                <input id="debugger-input" placeholder="enter command or type help" data-list="help, read, set">
+            </div>
+        </div>
+    </body>
+</html>

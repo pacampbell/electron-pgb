@@ -1,0 +1,20 @@
+{
+  "name": "electron-helloworld",
+  "version": "1.0.0",
+  "description": "Hello World application",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^2.0.2"
+  },
+  "dependencies": {
+    "bindings": "^1.3.0",
+    "electron-require": "^0.3.0",
+    "pgb-node": "file:../pgb-node",
+    "printf": "^0.3.0",
+    "semantic-ui": "^2.3.1",
+    "string-format": "^2.0.0"
+  }
+}
